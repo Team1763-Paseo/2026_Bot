@@ -23,7 +23,7 @@ public final class Configs {
   private static final  double nominalVoltage = 12.0;
 
   public static final class EasySwerveModule {
-    public static final SparkMaxConfig drivingConfig = new SparkMaxConfig();
+    public static final SparkFlexConfig drivingConfig = new SparkFlexConfig();
     public static final SparkMaxConfig turningConfig = new SparkMaxConfig();
     static {
       // Use module constants to calculate conversion factors and feed forward gain.
@@ -34,7 +34,7 @@ public final class Configs {
 
       drivingConfig
         .idleMode(IdleMode.kBrake)
-        .smartCurrentLimit(60);
+        .smartCurrentLimit(80);
       drivingConfig
         .encoder
           .positionConversionFactor(drivingFactor) // meters
@@ -50,7 +50,7 @@ public final class Configs {
 
       turningConfig
         .idleMode(IdleMode.kBrake)
-        .smartCurrentLimit(60);
+        .smartCurrentLimit(80);
       turningConfig
         .absoluteEncoder
           // Do not invert the turning encoder, since the output shaft rotates in the same
@@ -86,14 +86,14 @@ public final class Configs {
         .inverted(false)
         .idleMode(IdleMode.kCoast)
         .openLoopRampRate(0.5)
-        .smartCurrentLimit(40);
+        .smartCurrentLimit(80);
 
       // Configure basic settings of the conveyor motor
       conveyorConfig
         .inverted(true)
         .idleMode(IdleMode.kCoast)
         .openLoopRampRate(0.5)
-        .smartCurrentLimit(40);
+        .smartCurrentLimit(80);
     }
   }
 
@@ -143,7 +143,7 @@ public final class Configs {
         .inverted(true)
         .idleMode(IdleMode.kCoast)
         .openLoopRampRate(1.0)
-        .smartCurrentLimit(60);
+        .smartCurrentLimit(80);
     }
   }
 

@@ -21,7 +21,7 @@ public final class Constants {
 
   public static final class IntakeSubsystemConstants {
     public static final int kIntakeMotorCanId = 2;    // SPARK Flex CAN ID
-    public static final int kConveyorMotorCanId = 4;  // SPARK Flex CAN ID
+    public static final int kConveyorMotorCanId = 44;  // SPARK Flex CAN ID
 
     public static final class IntakeSetpoints {
       public static final double kIntake = 0.6;
@@ -35,8 +35,8 @@ public final class Constants {
   }
 
   public static final class ShooterSubsystemConstants {
-    public static final int kFeederMotorCanId = 5;    // SPARK Flex CAN ID
-    public static final int kFlywheelMotorCanId = 6;  // SPARK Flex CAN ID (Right)
+    public static final int kFeederMotorCanId = 55;    // SPARK Flex CAN ID
+    public static final int kFlywheelMotorCanId = 60;  // SPARK Flex CAN ID (Right)
     public static final int kFlywheelFollowerMotorCanId = 7;  // SPARK Flex CAN ID (Left)
 
     public static final class FeederSetpoints {
@@ -69,18 +69,18 @@ public final class Constants {
             new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
-    private static final double kEasySwerveAngularOffsetCompensation = Math.PI / 4;
+    private static final double kEasySwerveAngularOffsetCompensation = 0;
     public static final double kFrontLeftChassisAngularOffset = (-Math.PI / 2) + kEasySwerveAngularOffsetCompensation;
-    public static final double kFrontRightChassisAngularOffset = 0 + kEasySwerveAngularOffsetCompensation;
-    public static final double kBackLeftChassisAngularOffset = Math.PI + kEasySwerveAngularOffsetCompensation;
+    public static final double kFrontRightChassisAngularOffset = 0 + kEasySwerveAngularOffsetCompensation + Math.PI;
+    public static final double kBackLeftChassisAngularOffset = Math.PI + kEasySwerveAngularOffsetCompensation + Math.PI;
     public static final double kBackRightChassisAngularOffset = (Math.PI / 2) + kEasySwerveAngularOffsetCompensation;
 
     // The EasySwerve module allows installation of the motors either on top or bottom of the module.
     // These constants configure the location of the motors. The default configuration is with both
     // motors on the bottom of the module.
     public static final boolean kFrontLeftDrivingMotorOnBottom = true;
-    public static final boolean kRearLeftDrivingMotorOnBottom = true;
-    public static final boolean kFrontRightDrivingMotorOnBottom = true;
+    public static final boolean kRearLeftDrivingMotorOnBottom = true; //Changed 20206-03-20
+    public static final boolean kFrontRightDrivingMotorOnBottom = true; //Changed 2026-03-20
     public static final boolean kRearRightDrivingMotorOnBottom = true;
 
     public static final boolean kFrontLeftTurningMotorOnBottom = true;
@@ -89,9 +89,9 @@ public final class Constants {
     public static final boolean kRearRightTurningMotorOnBottom = true;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 2;
+    public static final int kFrontLeftDrivingCanId = 32;
     public static final int kRearLeftDrivingCanId = 9;
-    public static final int kFrontRightDrivingCanId = 4;
+    public static final int kFrontRightDrivingCanId = 34;
     public static final int kRearRightDrivingCanId = 8;
 
     public static final int kFrontLeftTurningCanId = 3;
