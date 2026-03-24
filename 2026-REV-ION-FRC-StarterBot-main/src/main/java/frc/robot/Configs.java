@@ -47,7 +47,6 @@ public final class Configs {
           .outputRange(-1, 1)
           .feedForward
             .kV(drivingVelocityFeedForward);
-
       turningConfig
         .idleMode(IdleMode.kBrake)
         .smartCurrentLimit(80);
@@ -55,7 +54,8 @@ public final class Configs {
         .absoluteEncoder
           // Do not invert the turning encoder, since the output shaft rotates in the same
           // direction as the steering motor in the EasySwerve Module.
-          .inverted(false)
+          // It only works whenn inverted sooo - 3/21/26
+          .inverted(true)
           .positionConversionFactor(turningFactor) // radians
           .velocityConversionFactor(turningFactor / 60.0)  // radians per second
           // These apply to REV Through Bore Encoder V2 (for V1, set them both to 1.0):

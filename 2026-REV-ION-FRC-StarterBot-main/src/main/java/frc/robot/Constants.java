@@ -57,9 +57,9 @@ public final class Constants {
 
     // Chassis configuration
     // Distance between centers of right and left wheels on robot
-    public static final double kTrackWidth = Units.inchesToMeters(22.5);
+    public static final double kTrackWidth = Units.inchesToMeters(23.5);
     // Distance between front and back wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(22.5);
+    public static final double kWheelBase = Units.inchesToMeters(23.5);
 
     public static final SwerveDriveKinematics kDriveKinematics =
         new SwerveDriveKinematics(
@@ -71,22 +71,22 @@ public final class Constants {
     // Angular offsets of the modules relative to the chassis in radians
     private static final double kEasySwerveAngularOffsetCompensation = 0;
     public static final double kFrontLeftChassisAngularOffset = (-Math.PI / 2) + kEasySwerveAngularOffsetCompensation;
-    public static final double kFrontRightChassisAngularOffset = 0 + kEasySwerveAngularOffsetCompensation + Math.PI;
-    public static final double kBackLeftChassisAngularOffset = Math.PI + kEasySwerveAngularOffsetCompensation + Math.PI;
+    public static final double kFrontRightChassisAngularOffset = 0 + kEasySwerveAngularOffsetCompensation;
+    public static final double kBackLeftChassisAngularOffset = Math.PI + kEasySwerveAngularOffsetCompensation;
     public static final double kBackRightChassisAngularOffset = (Math.PI / 2) + kEasySwerveAngularOffsetCompensation;
 
     // The EasySwerve module allows installation of the motors either on top or bottom of the module.
     // These constants configure the location of the motors. The default configuration is with both
     // motors on the bottom of the module.
-    public static final boolean kFrontLeftDrivingMotorOnBottom = true;
-    public static final boolean kRearLeftDrivingMotorOnBottom = true; //Changed 20206-03-20
-    public static final boolean kFrontRightDrivingMotorOnBottom = true; //Changed 2026-03-20
-    public static final boolean kRearRightDrivingMotorOnBottom = true;
+    public static final boolean kFrontLeftDrivingMotorOnBottom = false;
+    public static final boolean kRearLeftDrivingMotorOnBottom = false;
+    public static final boolean kFrontRightDrivingMotorOnBottom = false;
+    public static final boolean kRearRightDrivingMotorOnBottom = false;
 
-    public static final boolean kFrontLeftTurningMotorOnBottom = true;
-    public static final boolean kRearLeftTurningMotorOnBottom = true;
-    public static final boolean kFrontRightTurningMotorOnBottom = true;
-    public static final boolean kRearRightTurningMotorOnBottom = true;
+    public static final boolean kFrontLeftTurningMotorOnBottom = false;
+    public static final boolean kRearLeftTurningMotorOnBottom = false;
+    public static final boolean kFrontRightTurningMotorOnBottom = false;
+    public static final boolean kRearRightTurningMotorOnBottom = false;
 
     // SPARK MAX CAN IDs
     public static final int kFrontLeftDrivingCanId = 32;
