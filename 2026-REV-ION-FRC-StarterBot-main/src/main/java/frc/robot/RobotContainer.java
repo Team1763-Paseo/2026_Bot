@@ -5,15 +5,16 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.math.geometry.Pose2d;
+//import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj.RobotController;
-import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 //import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+//import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Autos;
 import frc.robot.Constants.OIConstants;
@@ -35,16 +36,17 @@ public class RobotContainer {
   private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
   // The driver's controller
-  //private final CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-  private final Joystick m_driverController = new Joystick(OIConstants.kDriverControllerPort);
+  private final CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  //private final CommandJoystick m_driverController = new CommandJoystick(OIConstants.kDriverControllerPort);
+  //private final JoystickButton trigger = new JoystickButton(m_driverController.getHID(), 1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    //configureBindings();
+    configureBindings();
 
     // Configure default commands
-    /*m_robotDrive.setDefaultCommand(
+    m_robotDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
@@ -57,14 +59,13 @@ public class RobotContainer {
                     -MathUtil.applyDeadband(
                         m_driverController.getRightX(), OIConstants.kDriveDeadband),
                     true),
-            m_robotDrive).withName("Robot Drive Default"));*/
+            m_robotDrive).withName("Robot Drive Default"));
 
-    configureButtonBindings();
-    m_robotDrive.resetOdometry(new Pose2d()); // from old system
+    //configureButtonBindings();
 
     // Configure default commands
     // Throttle should be connected to the joystick slider - higher value more speed. It should affect all axis
-    m_robotDrive.setDefaultCommand(
+    /*m_robotDrive.setDefaultCommand(
             new RunCommand(
             () ->
                 m_robotDrive.drive(
@@ -75,7 +76,7 @@ public class RobotContainer {
                     -MathUtil.applyDeadband(
                         m_driverController.getZ(), OIConstants.kDriveDeadband) * -((m_driverController.getThrottle() - 1) / 2),
                     true),
-            m_robotDrive));
+            m_robotDrive));*/
 
     SmartDashboard.putData(m_intake);
     SmartDashboard.putData(m_shooter);
@@ -98,7 +99,7 @@ public class RobotContainer {
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  /*private void configureBindings() {
+  private void configureBindings() {
     // Left Stick Button -> Set swerve to X
     m_driverController.leftStick().whileTrue(m_robotDrive.setXCommand());
 
@@ -116,8 +117,9 @@ public class RobotContainer {
       .whileTrue(m_intake.runExtakeCommand());
 
     // Y Button -> Run intake and run the shooter flywheel and feeder
-    m_driverController.y().toggleOnTrue(m_shooter.runShooterCommand().alongWith(m_intake.runIntakeCommand()));
-  }*/
+    m_driverController.rightBumper().whileTrue(m_shooter.runShooterCommand());
+    m_driverController.leftBumper().whileTrue(m_shooter.runFeederCommand());
+  }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -125,15 +127,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling passing it to a
    * {@link JoystickButton}.
    */
-  private void configureButtonBindings() {
+  /*private void configureButtonBindings() {
     // Below are the various buttons for the joystick, change the button number to adjust which button it is connected to
     // Set swerve to X formation
-    new JoystickButton(m_driverController, 10)
-        .whileTrue(new RunCommand(() -> m_robotDrive.setXCommand(), m_robotDrive));
+    //new JoystickButton(m_driverController, 10)
+    //    .whileTrue(new RunCommand(() -> m_robotDrive.setXCommand(), m_robotDrive));
 
     // Shoot
-    new JoystickButton(m_driverController, 1) // button 1 should be trigger
-        .whileTrue(new RunCommand(() -> m_shooter.runShooterCommand()));
+    //trigger.whileTrue(new RunCommand(() -> m_shooter.runShooterCommand()));
 
     // Run intake
     new JoystickButton(m_driverController, 2) // 2 should be top of joystick
@@ -154,7 +155,7 @@ public class RobotContainer {
     // Zero swerve heading
     new JoystickButton(m_driverController, 7) // 7 should be on the left side of the joystick
     .whileTrue(new RunCommand(() -> m_robotDrive.zeroHeadingCommand(), m_robotDrive));   
-  }
+  }*/
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

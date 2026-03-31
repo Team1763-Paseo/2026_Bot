@@ -130,10 +130,10 @@ public class ShooterSubsystem extends SubsystemBase {
   public Command runFeederCommand() {
     return this.startEnd(
         () -> {
-          this.setFlywheelVelocity(FlywheelSetpoints.kShootRpm);
+          //this.setFlywheelVelocity(FlywheelSetpoints.kShootRpm);
           this.setFeederPower(FeederSetpoints.kFeed);
         }, () -> {
-          this.setFlywheelVelocity(0.0);
+          //this.setFlywheelVelocity(0.0);
           this.setFeederPower(0.0);
         }).withName("Feeding");
   }
