@@ -116,8 +116,8 @@ public class RobotContainer {
       .leftTrigger(OIConstants.kTriggerButtonThreshold)
       .whileTrue(m_intake.runExtakeCommand());
 
-    // Y Button -> Run intake and run the shooter flywheel and feeder
-    m_driverController.rightBumper().whileTrue(m_shooter.runShooterCommand());
+    //m_driverController.rightBumper().whileTrue(m_shooter.runShooterCommand());
+    // Left bumper runs feeder and shooter
     m_driverController.leftBumper().whileTrue(m_shooter.runFeederCommand());
   }
 
